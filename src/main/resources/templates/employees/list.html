@@ -43,9 +43,7 @@
 	</head>
 
 	<body>
-
 		<div th:replace="~{commos::header}"></div>
-
 		<div class="container-fluid">
 			<div class="row">
 				<div th:replace="~{commos::sidebar(page='employees')}"></div>
@@ -74,7 +72,7 @@
 								<td th:text="${#dates.format(employee.getBirthday(),'yyyy-MM-dd')}"></td>
 								<td>
 									<a class="btn btn-sm btn-primary" th:href="@{'/editEmployee/'+${employee.id}}">Edit</a>
-									<a class="btn btn-sm btn-danger"th:href="@{/deleteEmployee}">Delete</a>
+									<a class="btn btn-sm btn-danger"th:href="@{'/deleteEmployee/'+${employee.id}}">Delete</a>
 								</td>
 							</tr>
 							</tbody>
