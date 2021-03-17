@@ -14,13 +14,13 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, String name, String email, Integer gender, Department department) {
+    public Employee(Integer id, String name, String email, Integer gender, Department department, Date birthday) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.department = department;
-        this.birthday = new Date();
+        this.birthday = birthday;
     }
 
     public Integer getId() {
@@ -70,7 +70,6 @@ public class Employee {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
-
 
     @Override
     public String toString() {

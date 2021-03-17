@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wilsonovo.springboot.mapper.EmployeeMapper">
+
+    <resultMap id="employeeMap" type="Employee">
+        <association property="department" column="department" javaType="Department" select="com.wilsonovo.springboot.mapper.DepartmentMapper.getDepartmentById">
+            <id property="id" column="id"></id>
+            <result property="name" column="name"></result>
+        </association>
+    </resultMap>
+
+    <select id="getAll" resultMap="employeeMap">
+        select * from employee
+    </select>
+    <select id="getEmployeeById" parameterType="int" resultMap="employeeMap">
+        select * from employee where id = #{id}
+    </select>
+    <insert id="add" parameterType="map">
+        insert into employee (name,email,gender,department,birthday) values (#{name},#{email},#{gender},#{department},#{birthday})
+    </insert>
+    <update id="update" parameterType="map">
+        update employee set name=#{name},email=#{email},gender=#{gender},birthday=#{birthday},department=#{department} where id=#{id}
+    </update>
+    <delete id="delete" parameterType="int">
+        delete from employee where id = #{id}
+    </delete>
+
+</mapper>
