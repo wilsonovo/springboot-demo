@@ -4,8 +4,9 @@ import com.wilsonovo.springboot.mapper.DepartmentMapper;
 import com.wilsonovo.springboot.mapper.EmployeeMapper;
 import com.wilsonovo.springboot.pojo.Department;
 import com.wilsonovo.springboot.pojo.Employee;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.HashMap;
 import java.util.List;
 
+@Api
 @Controller
 public class EmployeeController {
 
@@ -77,5 +79,11 @@ public class EmployeeController {
     public String deleteEmployee(@PathVariable("id")Integer id){
         employeeMapper.delete(id);
         return "redirect:/employees";
+    }
+
+    @ApiOperation("获取用户")
+    @GetMapping("/getEmployee")
+    public Employee employee(){
+        return new Employee();
     }
 }

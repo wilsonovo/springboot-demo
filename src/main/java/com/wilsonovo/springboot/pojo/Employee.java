@@ -1,15 +1,21 @@
 package com.wilsonovo.springboot.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
+@ApiModel("用户")
 public class Employee {
 
     private Integer id;
     private String name;
     private String email;
     private Integer gender;
-    private Department department;
     private Date birthday;
+
+    @ApiModelProperty("部门")
+    private Department department;
 
     public Employee() {
     }
